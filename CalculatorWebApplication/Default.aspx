@@ -1,117 +1,79 @@
-﻿<html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" %>
 
-<head id="Head1" runat="server">
+<!DOCTYPE html>
 
-    <title></title>
-
-    <style type="text/css">
-
-    .cal
-
-    {
-
-        position:absolute;
-
-        top:50px;
-
-        left:150px;
-
-        right:400px;
-
-        height:500px;
-
-        bottom:100px;
-
-        background-color:Teal;
-
-        }
-
-    </style>
-
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Calculator</title>
+    <link href="/Content/Site.css" rel="stylesheet" />
 </head>
-
 <body>
-
     <form id="form1" runat="server">
-
-    <div class="cal">
-
-        <asp:Label ID="l" Text=" BASIC CALCULATOR" runat="server" Style="margin-left: 200px"
-
-            Font-Bold="False" Font-Italic="False"></asp:Label>
-
-        <asp:TextBox ID="t" runat="server" Style="margin-left: 100px; margin-top: 24px;"
-
-            Width="335px" Height="41px"></asp:TextBox>
-
-        <asp:Button ID="b1" Text="1" runat="server" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="b1_Click" />
-
-        <asp:Button ID="b2" Text="2" runat="server" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="b2_Click" />
-
-        <asp:Button ID="b3" Text="3" runat="server" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="b3_Click" />
-
-        <asp:Button ID="add" Text="+" runat="server" Height="37px" Style="margin-left: 0px;
-
-            margin-top: 0px;" Width="57px" OnClick="add_Click" />
-
-        <asp:Button ID="b4" Text="4" runat="server" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="b4_Click" />
-
-        <asp:Button ID="b5" Text="5" runat="server" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="b5_Click" />
-
-        <asp:Button ID="b6" Text="6" runat="server" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="b6_Click" />
-
-        <asp:Button ID="sub" Text="-" runat="server" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="sub_Click" />
-
-        <asp:Button ID="b7" Text="7" runat="server" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="b7_Click" />
-
-        <asp:Button ID="b8" Text="8" runat="server" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="b8_Click" />
-
-        <asp:Button ID="b9" Text="9" runat="server" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="b9_Click" />
-
-        <asp:Button ID="mul" Text="*" runat="server" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="mul_Click" />
-
-        <asp:Button ID="b0" runat="server" Text="0" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="b0_Click" />
-
-        <asp:Button ID="clr" runat="server" Text="CLR" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="clr_Click" />
-
-        <asp:Button ID="eql" runat="server" Text="=" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="eql_Click" />
-
-        <asp:Button ID="div" Text="/" runat="server" Height="37px" Style="margin-left: 0px"
-
-            Width="57px" OnClick="div_Click" />
-
+    <div class="calculator-holder">
+    <table class="calculator" id="calc">
+            <tr>
+                <td colspan="4" class="calc_td_result">
+                    <input type="text" readonly="readonly" runat="server" name="calc_result" id="calc_result" class="calc_result" />
+                </td>
+            </tr>
+            <tr>
+                <td class="calc_td_btn">
+                        <asp:Button ID="ButtonCE" runat="server" CssClass="calc_btn" Text="CE" OnClick="ButtonCE_Click" />
+                </td>
+                <td class="calc_td_btn">
+                        <asp:Button ID="ButtonReturn" runat="server" CssClass="calc_btn" Text="0" OnClick="ButtonReturn_Click" />
+                </td>
+                <td class="calc_td_btn">
+                        <asp:Button ID="ButtonPercentage" runat="server" CssClass="calc_btn" Text="&larr;" OnClick="ButtonPercentage_Click" />
+                </td>
+                <td class="calc_td_btn">
+                        <asp:Button ID="ButtonPlus" runat="server" CssClass="calc_btn" Text="+" OnClick="ButtonPlus_Click" />
+                </td>
+            </tr>
+            <tr>
+                <td class="calc_td_btn">
+                        <asp:Button ID="Button7" runat="server" CssClass="calc_btn" Text="7" OnClick="Button7_Click" />
+                </td>
+                <td class="calc_td_btn">
+                        <asp:Button ID="Button8" runat="server" CssClass="calc_btn" Text="8" OnClick="Button8_Click" />
+                </td>
+                <td class="calc_td_btn">
+                        <asp:Button ID="Button9" runat="server" CssClass="calc_btn" Text="9" OnClick="Button9_Click" />
+                </td>
+                <td class="calc_td_btn">
+                        <asp:Button ID="ButtonMinus" runat="server" CssClass="calc_btn" Text="-" OnClick="ButtonMinus_Click" />
+                </td>
+            </tr>
+            <tr>
+                <td class="calc_td_btn">
+                        <asp:Button ID="Button4" runat="server" CssClass="calc_btn" Text="4" OnClick="Button4_Click" />
+                </td>
+                <td class="calc_td_btn">
+                        <asp:Button ID="Button5" runat="server" CssClass="calc_btn" Text="5" OnClick="Button5_Click" />
+                </td>
+                <td class="calc_td_btn">
+                        <asp:Button ID="Button6" runat="server" CssClass="calc_btn" Text="6" OnClick="Button6_Click" />
+                </td>
+                <td class="calc_td_btn">
+                        <asp:Button ID="ButtonMultiply" runat="server" CssClass="calc_btn" Text="x" OnClick="ButtonMultiply_Click" />
+                </td>
+            </tr>
+            <tr>
+                <td class="calc_td_btn">
+                        <asp:Button ID="Button1" runat="server" CssClass="calc_btn" Text="1" OnClick="Button1_Click" />
+                </td>
+                <td class="calc_td_btn">
+                        <asp:Button ID="Button2" runat="server" CssClass="calc_btn" Text="2" OnClick="Button2_Click" />
+                </td>
+                <td class="calc_td_btn">
+                        <asp:Button ID="Button3" runat="server" CssClass="calc_btn" Text="3" OnClick="Button3_Click"/>
+                </td>
+                <td class="calc_td_btn">
+                        <asp:Button ID="ButtonDivide" runat="server" CssClass="calc_btn" Text="&divide;" OnClick="ButtonDivide_Click" />
+                </td>
+            </tr>
+        </table>
     </div>
-
     </form>
-
 </body>
-
 </html>
