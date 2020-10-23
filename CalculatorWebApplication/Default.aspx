@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="CalculatorWebApplication.Default" %>
 
 <!DOCTYPE html>
 
@@ -9,71 +9,71 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div class="calculator-holder">
-    <table class="calculator" id="calc">
-            <tr>
-                <td colspan="4" class="calc_td_result">
-                    <input type="text" readonly="readonly" runat="server" name="calc_result" id="calc_result" class="calc_result" />
-                </td>
-            </tr>
-            <tr>
-                <td class="calc_td_btn">
-                        <asp:Button ID="ButtonCE" runat="server" CssClass="calc_btn" Text="CE"  />
-                </td>
-                <td class="calc_td_btn">
-                        <asp:Button ID="Button0" runat="server" CssClass="calc_btn" Text="0"  />
-                </td>
-                <td class="calc_td_btn">
-                        <asp:Button ID="ButtonReturn" runat="server" CssClass="calc_btn" Text="&larr;"   />
-                </td>
-                <td class="calc_td_btn">
-                        <asp:Button ID="ButtonPlus" runat="server" CssClass="calc_btn" Text="+"   />
-                </td>
-            </tr>
-            <tr>
-                <td class="calc_td_btn">
-                        <asp:Button ID="Button7" runat="server" CssClass="calc_btn" Text="7"   />
-                </td>
-                <td class="calc_td_btn">
-                        <asp:Button ID="Button8" runat="server" CssClass="calc_btn" Text="8"    />
-                </td>
-                <td class="calc_td_btn">
-                        <asp:Button ID="Button9" runat="server" CssClass="calc_btn" Text="9"   />
-                </td>
-                <td class="calc_td_btn">
-                        <asp:Button ID="ButtonMinus" runat="server" CssClass="calc_btn" Text="-"   />
-                </td>
-            </tr>
-            <tr>
-                <td class="calc_td_btn">
-                        <asp:Button ID="Button4" runat="server" CssClass="calc_btn" Text="4"    />
-                </td>
-                <td class="calc_td_btn">
-                        <asp:Button ID="Button5" runat="server" CssClass="calc_btn" Text="5"   />
-                </td>
-                <td class="calc_td_btn">
-                        <asp:Button ID="Button6" runat="server" CssClass="calc_btn" Text="6"    />
-                </td>
-                <td class="calc_td_btn">
-                        <asp:Button ID="ButtonMultiply" runat="server" CssClass="calc_btn" Text="x"    />
-                </td>
-            </tr>
-            <tr>
-                <td class="calc_td_btn">
-                        <asp:Button ID="Button1" runat="server" CssClass="calc_btn" Text="1"   />
-                </td>
-                <td class="calc_td_btn">
-                        <asp:Button ID="Button2" runat="server" CssClass="calc_btn" Text="2"    />
-                </td>
-                <td class="calc_td_btn">
-                        <asp:Button ID="Button3" runat="server" CssClass="calc_btn" Text="3"  />
-                </td>
-                <td class="calc_td_btn">
-                        <asp:Button ID="ButtonDivide" runat="server" CssClass="calc_btn" Text="&divide;"  />
-                </td>
-            </tr>
-        </table>
-    </div>
+        <div class="calculator-holder">
+            <table class="calculator" id="calc">
+                <tr>
+                    <td colspan="4" class="calc_td_result">
+                        <input type="text" readonly="readonly" runat="server" name="calc_result" id="calc_result" class="calc_result" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="ButtonCE" runat="server" CssClass="calc_btn" Text="CE" />
+                    </td>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="Button0" runat="server" CssClass="calc_btn" Text="0" />
+                    </td>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="ButtonReturn" runat="server" CssClass="calc_btn" Text="&larr;" />
+                    </td>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="ButtonPlus" runat="server" CssClass="calc_btn" Text="+" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="Button7" runat="server" CssClass="calc_btn" Text="7" />
+                    </td>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="Button8" runat="server" CssClass="calc_btn" Text="8" />
+                    </td>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="Button9" runat="server" CssClass="calc_btn" Text="9" />
+                    </td>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="ButtonMinus" runat="server" CssClass="calc_btn" Text="-" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="Button4" runat="server" CssClass="calc_btn" Text="4" />
+                    </td>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="Button5" runat="server" CssClass="calc_btn" Text="5" />
+                    </td>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="Button6" runat="server" CssClass="calc_btn" Text="6" />
+                    </td>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="ButtonMultiply" runat="server" CssClass="calc_btn" Text="x" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="Button1" runat="server" CssClass="calc_btn" Text="1" />
+                    </td>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="Button2" runat="server" CssClass="calc_btn" Text="2" />
+                    </td>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="Button3" runat="server" CssClass="calc_btn" Text="3" />
+                    </td>
+                    <td class="calc_td_btn">
+                        <asp:Button ID="ButtonDivide" runat="server" CssClass="calc_btn" Text="&divide;" />
+                    </td>
+                </tr>
+            </table>
+        </div>
     </form>
 </body>
 </html>
