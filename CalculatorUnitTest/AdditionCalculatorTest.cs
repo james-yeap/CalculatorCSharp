@@ -6,7 +6,6 @@ namespace CalculatorUnitTest
     [TestFixture]
     public class AdditionCalculatorTest
     {
-
         [Test]
         public void SumOf1And2EqualTo3()
         {
