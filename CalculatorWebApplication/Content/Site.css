@@ -23,6 +23,7 @@
 }
 
 .calc_result {
+    height: 90%;
     width: 90%;
     text-align: right;
 }
@@ -45,4 +46,34 @@
     width: 90%;
     height: 90%;
     font-size: 20px;
+    color: white;
+    background-color: rgb(153, 153, 153);
+    opacity: 0.2;
+}
+
+.calc_op {
+    width: 90%;
+    height: 90%;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.2;
+}
+
+.calc_eq {
+    width: 90%;
+    height: 90%;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(255, 128, 0);
+    opacity: 0.2;
+}
+
+.calc_ce {
+    width: 90%;
+    height: 90%;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(255, 0, 0);
+    opacity: 0.2;
 }
