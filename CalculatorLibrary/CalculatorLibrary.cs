@@ -1,34 +1,28 @@
 ﻿namespace CalculatorLibrary
 {
-    public class Calculator
+    public class Calculate
     {
-        public static double DoOperation(double num1, double num2, string op)
+        public int Add(int Value1, int Value2)
         {
-            double result = double.NaN;
+            return Value1 + Value2;
+        }
+        public int Subtract(int Value1, int Value2)
+        {
+            return Value1 - Value2;
+        }
+        public int Multiply(int Value1, int Value2)
+        {
+            return Value1 * Value2;
+        }
+        public double Divide(int Value1, int Value2)
+        {
+            return Value1 / Value2;
+        }
+        public string Percentage(int Value1, int Value2)
+        {
+            Value1 = Value1 * 100;
 
-            switch (op)
-            {
-                case "a":
-                    result = num1 + num2;
-                    break;
-                case "s":
-                    result = num1 - num2;
-                    break;
-                case "m":
-                    result = num1 * num2;
-                    break;
-                case "d":
-                    // Ask the user to enter a non-zero divisor.
-                    if (num2 != 0)
-                    {
-                        result = num1 / num2;
-                    }
-                    break;
-                // Return text for an incorrect option entry.
-                default:
-                    break;
-            }
-            return result;
+            return Divide(Value1, Value2) + "%";
         }
     }
 }
