@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorLibrary", "CalculatorLibrary\CalculatorLibrary.csproj", "{831CC77E-3C64-4A2F-BBD5-C3C460A6A16A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorUnitTest", "CalculatorUnitTest\CalculatorUnitTest.csproj", "{CE6F7811-B068-4CDE-BE6E-37A28416739F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5FA49010-061D-4DA9-805E-A30AB5AEF11D} = {5FA49010-061D-4DA9-805E-A30AB5AEF11D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorWebApplication", "CalculatorWebApplication\CalculatorWebApplication.csproj", "{5FA49010-061D-4DA9-805E-A30AB5AEF11D}"
 EndProject
