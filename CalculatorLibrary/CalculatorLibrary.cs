@@ -1,6 +1,6 @@
 ﻿namespace CalculatorLibrary
 {
-    public class Calculate
+    public class Calculate : ICalculator
     {
         public int Add(int Value1, int Value2)
         {

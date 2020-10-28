@@ -6,21 +6,20 @@ namespace CalculatorWebApplication
 {
     public partial class Default : System.Web.UI.Page
     {
-        private bool _Clear = false;
-        Calculate _Calculate;
+        private bool _clear = false;
+        ICalculator _calculator = new Calculate();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (ViewState["_Clear"] == null ) ViewState["_Clear"] = false;
-            _Clear = (bool) ViewState["_Clear"];
-            _Calculate = new Calculate();
+            if (ViewState["_clear"] == null ) ViewState["_clear"] = false;
+            _clear = (bool) ViewState["_clear"];
         }
 
         protected void NumButton_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            if (_Clear) calc_result.Value = string.Empty;
+            if (_clear) calc_result.Value = string.Empty;
             calc_result.Value = calc_result.Value + button.Text;
-            ViewState["_Clear"] = false;
+            ViewState["_clear"] = false;
         }
 
         protected void ButtonPlus_Click(object sender, EventArgs e)
@@ -33,7 +32,7 @@ namespace CalculatorWebApplication
             {
                 ViewState["Value1"] = calc_result.Value;
                 ViewState["Operation"] = "Addition";
-                ViewState["_Clear"] = true;
+                ViewState["_clear"] = true;
             }
         }
 
@@ -47,7 +46,7 @@ namespace CalculatorWebApplication
             {
                 ViewState["Value1"] = calc_result.Value;
                 ViewState["Operation"] = "Subtraction";
-                ViewState["_Clear"] = true;
+                ViewState["_clear"] = true;
             }
         }
 
@@ -61,7 +60,7 @@ namespace CalculatorWebApplication
             {
                 ViewState["Value1"] = calc_result.Value;
                 ViewState["Operation"] = "Multiplication";
-                ViewState["_Clear"] = true;
+                ViewState["_clear"] = true;
             }
         }
 
@@ -75,7 +74,7 @@ namespace CalculatorWebApplication
             {
                 ViewState["Value1"] = calc_result.Value;
                 ViewState["Operation"] = "Division";
-                ViewState["_Clear"] = true;
+                ViewState["_clear"] = true;
             }
         }
 
@@ -101,23 +100,23 @@ namespace CalculatorWebApplication
                 {
                     if ((string)ViewState["Operation"] == "Addition")
                     {
-                        calc_result.Value = _Calculate.Add(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
+                        calc_result.Value = _calculator.Add(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
                     }
                     else if ((string)ViewState["Operation"] == "Subtraction")
                     {
-                        calc_result.Value = _Calculate.Subtract(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
+                        calc_result.Value = _calculator.Subtract(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
                     }
                     else if ((string)ViewState["Operation"] == "Multiplication")
                     {
-                        calc_result.Value = _Calculate.Multiply(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
+                        calc_result.Value = _calculator.Multiply(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
                     }
                     else if ((string)ViewState["Operation"] == "Division")
                     {
-                        calc_result.Value = _Calculate.Divide(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
+                        calc_result.Value = _calculator.Divide(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
                     }
                     else if ((string)ViewState["Operation"] == "Percentage")
                     {
-                        calc_result.Value = _Calculate.Percentage(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
+                        calc_result.Value = _calculator.Percentage(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
                     }
                     else Response.Write("<script>alert('No Operation was recorded.')</script>");
                 }
