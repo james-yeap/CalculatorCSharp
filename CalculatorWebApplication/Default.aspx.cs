@@ -1,5 +1,6 @@
-﻿using CalculatorLibrary;
+﻿using Newtonsoft.Json;
 using System;
+using System.Net.Http;
 using System.Web.UI.WebControls;
 
 namespace CalculatorWebApplication
@@ -7,7 +8,6 @@ namespace CalculatorWebApplication
     public partial class Default : System.Web.UI.Page
     {
         private bool _clear = false;
-        ICalculator _calculator = new Calculate();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (ViewState["_clear"] == null ) ViewState["_clear"] = false;
@@ -85,8 +85,9 @@ namespace CalculatorWebApplication
             ViewState["Operation"] = null;
         }
 
-        protected void ButtonEquals_Click(object sender, EventArgs e)
+        protected async void ButtonEquals_Click(object sender, EventArgs e)
         {
+
             if (calc_result.Value == string.Empty)
             {
                 Response.Write("<script>alert('No Value is given.')</script>");
@@ -100,23 +101,84 @@ namespace CalculatorWebApplication
                 {
                     if ((string)ViewState["Operation"] == "Addition")
                     {
-                        calc_result.Value = _calculator.Add(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
+                        using (var client = new HttpClient())
+                        {
+                            var num1 = Convert.ToInt32(ViewState["Value1"]);
+                            var num2 = Convert.ToInt32(ViewState["Value2"]);
+                            var response = await client.GetAsync("http://localhost/CalculatorAPI/addition{" + num1 + "}/{" + num2 + "}/");
+
+                            if(response.IsSuccessStatusCode)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                dynamic returnObject = JsonConvert.DeserializeObject(result);
+                                calc_result.Value = Convert.ToString(returnObject.result);
+                            }
+                        }
+                        //calc_result.Value = _calculator.Add(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
                     }
                     else if ((string)ViewState["Operation"] == "Subtraction")
                     {
-                        calc_result.Value = _calculator.Subtract(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
+                        using (var client = new HttpClient())
+                        {
+                            var num1 = Convert.ToInt32(ViewState["Value1"]);
+                            var num2 = Convert.ToInt32(ViewState["Value2"]);
+                            var response = await client.GetAsync("http://localhost/CalculatorAPI/subtraction{" + num1 + "}/{" + num2 + "}/");
+
+                            if (response.IsSuccessStatusCode)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                dynamic returnObject = JsonConvert.DeserializeObject(result);
+                                calc_result.Value = Convert.ToString(returnObject.result);
+                            }
+                        }
                     }
                     else if ((string)ViewState["Operation"] == "Multiplication")
                     {
-                        calc_result.Value = _calculator.Multiply(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
+                        using (var client = new HttpClient())
+                        {
+                            var num1 = Convert.ToInt32(ViewState["Value1"]);
+                            var num2 = Convert.ToInt32(ViewState["Value2"]);
+                            var response = await client.GetAsync("http://localhost/CalculatorAPI/multiplication{" + num1 + "}/{" + num2 + "}/");
+
+                            if (response.IsSuccessStatusCode)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                dynamic returnObject = JsonConvert.DeserializeObject(result);
+                                calc_result.Value = Convert.ToString(returnObject.result);
+                            }
+                        }
                     }
                     else if ((string)ViewState["Operation"] == "Division")
                     {
-                        calc_result.Value = _calculator.Divide(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
+                        using (var client = new HttpClient())
+                        {
+                            var num1 = Convert.ToInt32(ViewState["Value1"]);
+                            var num2 = Convert.ToInt32(ViewState["Value2"]);
+                            var response = await client.GetAsync("http://localhost/CalculatorAPI/division{" + num1 + "}/{" + num2 + "}/");
+
+                            if (response.IsSuccessStatusCode)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                dynamic returnObject = JsonConvert.DeserializeObject(result);
+                                calc_result.Value = Convert.ToString(returnObject.result);
+                            }
+                        }
                     }
                     else if ((string)ViewState["Operation"] == "Percentage")
                     {
-                        calc_result.Value = _calculator.Percentage(Convert.ToInt32(ViewState["Value1"]), Convert.ToInt32(ViewState["Value2"])).ToString();
+                        using (var client = new HttpClient())
+                        {
+                            var num1 = Convert.ToInt32(ViewState["Value1"]);
+                            var num2 = Convert.ToInt32(ViewState["Value2"]);
+                            var response = await client.GetAsync("http://localhost/CalculatorAPI/percentage{" + num1 + "}/{" + num2 + "}/");
+
+                            if (response.IsSuccessStatusCode)
+                            {
+                                var result = await response.Content.ReadAsStringAsync();
+                                dynamic returnObject = JsonConvert.DeserializeObject(result);
+                                calc_result.Value = Convert.ToString(returnObject.result);
+                            }
+                        }
                     }
                     else Response.Write("<script>alert('No Operation was recorded.')</script>");
                 }

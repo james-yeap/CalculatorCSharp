@@ -50,6 +50,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -209,7 +210,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CalculatorLibrary\CalculatorLibrary.csproj">
-      <Project>{831CC77E-3C64-4A2F-BBD5-C3C460A6A16A}</Project>
+      <Project>{831cc77e-3c64-4a2f-bbd5-c3c460a6a16a}</Project>
       <Name>CalculatorLibrary</Name>
     </ProjectReference>
   </ItemGroup>
